@@ -4,16 +4,18 @@ namespace OPP_5_2
 {
     public class Pupil
     {
-        private string firstName;
-        private string lastName;
-        private int markMath;
-        private int markNat;
-        private int markChoir;
-        private int markDraw;
-        private int markSport;
-        private int nMistW;
-        private int nMistR;
+        // оцінки в 12-ти бальній системі
+        private string firstName; // ім'я 
+        private string lastName; // прізвище
+        private int markMath; // оцінка з математики
+        private int markNat; // оцінка з природознавства
+        private int markChoir; // оцінка зі співів
+        private int markDraw; // оцінка з малювання
+        private int markSport; // оцінка з фізкультури
+        private int nMistW; // кількість помилок з письма
+        private int nMistR; // кількість помилок з читання
 
+        // властивості
         public string FirstName
         {
             get { return firstName; }
@@ -102,9 +104,8 @@ namespace OPP_5_2
             }
         }
 
-        /*public Pupil() 
+        public Pupil() // конструктор
         {
-
             firstName = "";
             lastName = "";
             markMath = 1;
@@ -114,7 +115,7 @@ namespace OPP_5_2
             markSport = 1;
             nMistW = 0;
             nMistR = 0;
-        }*/
+        }
 
         public Pupil(string fName, string lName, int mMath, int mNat, int mChoir, int mDraw, int mSport, int nMistW, int nMistR) // конструктор
         {
@@ -131,34 +132,23 @@ namespace OPP_5_2
 
         public virtual void Study()
         {
-            double markStudy = (markMath + markNat) / 2;
-            Console.WriteLine($"Оцінка Study: {markStudy}");
+            Console.WriteLine($"{FirstName} {LastName}: оцінка Study: {(markMath + markNat) / 2}");
         }
 
         public virtual void Write()
         {
-            double markWrite = 12 - nMistW;
-            Console.WriteLine($"Оцінка Write: {markWrite}");
+            Console.WriteLine($"{FirstName} {LastName}: оцінка Write: {12 - nMistW}");
         }
 
         public virtual void Read()
         {
-            double markRead = 12 - nMistR;
-            Console.WriteLine($"Оцінка Read: {markRead}");
+            Console.WriteLine($"{FirstName} {LastName}: оцінка Read: {12 - nMistR}");
         }
 
         public virtual void Relax()
         {
-            double markRelax = (markChoir + markDraw + markSport) / 3;
-            Console.WriteLine($"Оцінка Relax: {markRelax}");
+            Console.WriteLine($"{FirstName} {LastName}: оцінка Relax: {(markChoir + markDraw + markSport) / 3}");
         }
-
-        /*public virtual void Print()
-        {
-            double aver = ((markMath + markNat) / 2 + (12 - nMistW) + (12 - nMistR) + (markChoir + markDraw + markSport) / 3) / 4;
-            if (aver >= 1 && aver <= 12)
-            Console.WriteLine($"Середня оцінка: {aver}");
-        }*/
     }
 
     public class ExcelentPupil : Pupil
@@ -171,14 +161,7 @@ namespace OPP_5_2
         {
             if ((MarkMath >= 10) & (MarkNat >= 10))
             {
-                double markStudyEx = (MarkMath + MarkNat) / 2;
-                Console.WriteLine($"Оцінка StudyEx: {markStudyEx}");
-            }
-
-            else
-            {
-                double markStudyEx = 0;
-                Console.WriteLine($"Оцінка StudyEx: {markStudyEx}");
+                Console.WriteLine($"Оцінка StudyEx: {(MarkMath + MarkNat) / 2}");
             }
         }
 
@@ -186,14 +169,7 @@ namespace OPP_5_2
         {
             if (NMistW >= 0 && NMistW <= 2)
             {
-                double markWriteEx = 12 - NMistW;
-                Console.WriteLine($"Оцінка WriteEx: {markWriteEx}");
-            }
-
-            else
-            {
-                double markWriteEx = 0;
-                Console.WriteLine($"Оцінка WriteEx: {markWriteEx}");
+                Console.WriteLine($"Оцінка WriteEx: {12 - NMistW}");
             }
         }
 
@@ -201,14 +177,7 @@ namespace OPP_5_2
         {
             if (NMistR >= 0 && NMistR <= 2)
             {
-                double markReadEx = 12 - NMistR;
-                Console.WriteLine($"Оцінка ReadEx: {markReadEx}");
-            }
-
-            else
-            {
-                double markReadEx = 0;
-                Console.WriteLine($"Оцінка ReadEx: {markReadEx}");
+                Console.WriteLine($"Оцінка ReadEx: {12 - NMistR}");
             }
         }
 
@@ -216,14 +185,7 @@ namespace OPP_5_2
         {
             if ((MarkChoir >= 10) & (MarkDraw >= 10) & (MarkSport >= 10))
             {
-                double markRelaxEx = (MarkChoir + MarkDraw + MarkSport) / 3;
-                Console.WriteLine($"Оцінка RelaxEx: {markRelaxEx}");
-            }
-
-            else
-            {
-                double markRelaxEx = 0;
-                Console.WriteLine($"Оцінка RelaxEx: {markRelaxEx}");
+                Console.WriteLine($"Оцінка RelaxEx: {(MarkChoir + MarkDraw + MarkSport) / 3}");
             }
         }
         public void Print()
@@ -231,8 +193,8 @@ namespace OPP_5_2
             double aver = ((MarkMath + MarkNat) / 2 + (12 - NMistW) + (12 - NMistR) + (MarkChoir + MarkDraw + MarkSport) / 3) / 4;
             if (aver >= 10 && aver <= 12)
             {
-                Console.WriteLine($"Середня оцінка: {aver}");
                 Console.WriteLine($"{FirstName} {LastName} is {grade} pupil");
+                Console.WriteLine($"Середня оцінка: {aver}");
             }
         }
     }
@@ -247,14 +209,7 @@ namespace OPP_5_2
         {
             if ((MarkMath >= 7) & (MarkNat >= 7))
             {
-                double markStudyG = (MarkMath + MarkNat) / 2;
-                Console.WriteLine($"Оцінка StudyG: {markStudyG}");
-            }
-
-            else
-            {
-                // double markStudyG = 0;
-                Console.WriteLine($"Оцінка StudyG: не визначається");
+                Console.WriteLine($"Оцінка StudyG: {(MarkMath + MarkNat) / 2}");
             }
         }
 
@@ -262,14 +217,7 @@ namespace OPP_5_2
         {
             if (NMistW >= 0 && NMistW <= 5)
             {
-                double markWriteG = 12 - NMistW;
-                Console.WriteLine($"Оцінка WriteG: {markWriteG}");
-            }
-
-            else
-            {
-                double markWriteG = 0;
-                Console.WriteLine($"Оцінка WriteG: {markWriteG}");
+                Console.WriteLine($"Оцінка WriteG: {12 - NMistW}");
             }
         }
 
@@ -277,14 +225,7 @@ namespace OPP_5_2
         {
             if (NMistR >= 0 && NMistR <= 5)
             {
-                double markReadG = 12 - NMistR;
-                Console.WriteLine($"Оцінка ReadG: {markReadG}");
-            }
-
-            else
-            {
-                double markReadG = 0;
-                Console.WriteLine($"Оцінка ReadG: {markReadG}");
+                Console.WriteLine($"Оцінка ReadG: {12 - NMistR}");
             }
         }
 
@@ -292,23 +233,17 @@ namespace OPP_5_2
         {
             if ((MarkChoir >= 7) & (MarkDraw >= 7) & (MarkSport >= 7))
             {
-                double markRelaxG = (MarkChoir + MarkDraw + MarkSport) / 3;
-                Console.WriteLine($"Оцінка RelaxG: {markRelaxG}");
-            }
-
-            else
-            {
-                // double markRelaxG = 0;
-                Console.WriteLine($"Оцінка RelaxG: не визначається");
+                Console.WriteLine($"Оцінка RelaxG: {(MarkChoir + MarkDraw + MarkSport) / 3}");
             }
         }
+
         public void Print()
         {
             double aver = ((MarkMath + MarkNat) / 2 + (12 - NMistW) + (12 - NMistR) + (MarkChoir + MarkDraw + MarkSport) / 3) / 4;
             if (aver >= 7 && aver <= 9)
             {
-                Console.WriteLine($"Середня оцінка: {aver}");
                 Console.WriteLine($"{FirstName} {LastName} is {grade} pupil");
+                Console.WriteLine($"Середня оцінка: {aver}");
             }
         }
     }
@@ -323,14 +258,7 @@ namespace OPP_5_2
         {
             if ((MarkMath >= 1) & (MarkNat >= 1))
             {
-                double markStudyB = (MarkMath + MarkNat) / 2;
-                Console.WriteLine($"Оцінка StudyB: {markStudyB}");
-            }
-
-            else
-            {
-                double markStudyB = 0;
-                Console.WriteLine($"Оцінка StudyB: {markStudyB}");
+                Console.WriteLine($"Оцінка StudyB: {(MarkMath + MarkNat) / 2}");
             }
         }
 
@@ -338,14 +266,7 @@ namespace OPP_5_2
         {
             if (NMistW >= 0 && NMistW <= 11)
             {
-                double markWriteB = 12 - NMistW;
-                Console.WriteLine($"Оцінка WriteB: {markWriteB}");
-            }
-
-            else
-            {
-                double markWriteB = 0;
-                Console.WriteLine($"Оцінка WriteB: {markWriteB}");
+                Console.WriteLine($"Оцінка WriteB: {12 - NMistW}");
             }
         }
 
@@ -353,14 +274,7 @@ namespace OPP_5_2
         {
             if (NMistR >= 0 && NMistR <= 11)
             {
-                double markReadB = 12 - NMistR;
-                Console.WriteLine($"Оцінка ReadB: {markReadB}");
-            }
-
-            else
-            {
-                double markReadB = 0;
-                Console.WriteLine($"Оцінка ReadB: {markReadB}");
+                Console.WriteLine($"Оцінка ReadB: {12 - NMistR}");
             }
         }
 
@@ -368,14 +282,7 @@ namespace OPP_5_2
         {
             if ((MarkChoir >= 1) & (MarkDraw >= 1) & (MarkSport >= 1))
             {
-                double markRelaxB = (MarkChoir + MarkDraw + MarkSport) / 3;
-                Console.WriteLine($"Оцінка RelaxB: {markRelaxB}");
-            }
-
-            else
-            {
-                double markRelaxB = 0;
-                Console.WriteLine($"Оцінка RelaxB: {markRelaxB}");
+                Console.WriteLine($"Оцінка RelaxB: {(MarkChoir + MarkDraw + MarkSport) / 3}");
             }
         }
 
@@ -384,48 +291,38 @@ namespace OPP_5_2
             double aver = ((MarkMath + MarkNat) / 2 + (12 - NMistW) + (12 - NMistR) + (MarkChoir + MarkDraw + MarkSport) / 3) / 4;
             if (aver >= 1 && aver <= 6)
             {
-                Console.WriteLine($"Середня оцінка: {aver}");
                 Console.WriteLine($"{FirstName} {LastName} is {grade} pupil");
+                Console.WriteLine($"Середня оцінка: {aver}");
             }
         }
     }
 
     public class ClassRoom : Pupil
     {
-        Pupil p1 = new Pupil("Lina", "Donchenko", 10, 10, 11, 12, 10, 1, 2);
-        Pupil p2 = new Pupil("Petro", "Petriv", 7, 9, 7, 8, 9, 4, 3);
+        private static List<Pupil> myList;
+        public Pupil p1, p2, p3, p4;
 
-        public ClassRoom(string fName, string lName, int mMath, int mNat, int mChoir, int mDraw, int mSport, int nMistW, int nMistR, Pupil p1, Pupil p2) : base(fName, lName, mMath, mNat, mChoir, mDraw, mSport, nMistW, nMistR)
+        public ClassRoom(Pupil p1, Pupil p2, Pupil p3, Pupil p4) : base()
         {
             this.p1 = p1;
             this.p2 = p2;
+            this.p3 = p3;
+            this.p4 = p4;
 
-            List<Pupil> myList = new(4);
+            myList = new List<Pupil>(4)
             {
-                myList.Add(p1);
-                myList.Add(p2);
-            }
+                 new Pupil() { FirstName = "Lina", LastName = "Donchenko", MarkMath = 10, MarkNat = 10, MarkChoir = 11, MarkDraw = 12, MarkSport = 10, NMistW = 1, NMistR = 2 },
+                 new Pupil() { FirstName = "Petro", LastName = "Petriv", MarkMath = 7, MarkNat = 9, MarkChoir = 7, MarkDraw = 8, MarkSport = 9, NMistW = 4, NMistR = 3 },
+                 new Pupil() { FirstName = "Danya", LastName = "Bondarenko", MarkMath = 8, MarkNat = 8, MarkChoir = 7, MarkDraw = 7, MarkSport = 8, NMistW = 3, NMistR = 2 },
+                 new Pupil() { FirstName = "Ivan", LastName = "Boyko", MarkMath = 6, MarkNat = 5, MarkChoir = 6, MarkDraw = 4, MarkSport = 8, NMistW = 5, NMistR = 6 }
+            };
+        }
 
-            for(int pupil = 0; pupil < 4; pupil++)
+        public static void Print()
+        {
+            foreach (Pupil pupil in myList)
             {
-                // виклик конструктора з 9 параметрами
-                myList[pupil] = new Pupil(fName, lName, mMath, mNat, mChoir, mDraw, mSport, nMistW, nMistR);
-            }
-
-            void Print(List<Pupil> myList)
-            {
-                foreach (Pupil pupil in myList)
-                {
-                    Console.WriteLine(fName + " " + pupil.ToString() + "\n",
-                                      lName + " " + pupil.ToString() + "\n",
-                                      mMath + " " + pupil.ToString() + "\n",
-                                      mNat + " " + pupil.ToString() + "\n",
-                                      mChoir + " " + pupil.ToString() + "\n",
-                                      mDraw + " " + pupil.ToString() + "\n",
-                                      mSport + " " + pupil.ToString() + "\n",
-                                      nMistW + " " + pupil.ToString() + "\n",
-                                      nMistR + " " + pupil.ToString() + "\n");
-                }
+                Console.WriteLine(pupil.FirstName + " " + pupil.LastName + " " + pupil.MarkMath + " " + pupil.MarkNat + " " + pupil.MarkChoir + " " + pupil.MarkDraw + " " + pupil.MarkSport + " " + pupil.NMistW + " " + pupil.NMistR);
             }
         }
     }
@@ -437,50 +334,61 @@ namespace OPP_5_2
             Console.OutputEncoding = System.Text.Encoding.Default;
 
             Pupil p1 = new Pupil("Lina", "Donchenko", 10, 10, 11, 12, 10, 1, 2);
-            p1.Study();
-            p1.Write();
-            p1.Read();
-            p1.Relax();
-            //p1.Print();
 
             Pupil p2 = new Pupil("Petro", "Petriv", 7, 9, 7, 8, 9, 4, 3);
-            p2.Study();
-            p2.Write();
-            p2.Read();
-            p2.Relax();
-            //p2.Print();
 
-            Console.WriteLine();
+            Pupil p3 = new Pupil("Danya", "Bondarenko", 8, 8, 7, 7, 8, 3, 2);
+
+            Pupil p4 = new Pupil("Ivan", "Boyko", 6, 5, 6, 4, 8, 5, 6);
 
             ExcelentPupil ep1 = new ExcelentPupil("Lina", "Donchenko", 10, 10, 11, 12, 10, 1, 2);
-
-            ep1.Study();
-            ep1.Write();
-            ep1.Read();
-            ep1.Relax();
             ep1.Print();
 
-            Console.WriteLine();
-
             GoodPupil gp1 = new GoodPupil("Lina", "Donchenko", 10, 10, 11, 12, 10, 1, 2);
-            gp1.Study();
-            gp1.Write();
-            gp1.Read();
-            gp1.Relax();
             gp1.Print();
 
-            Console.WriteLine();
-
             BadPupil bp1 = new BadPupil("Lina", "Donchenko", 10, 10, 11, 12, 10, 1, 2);
-            bp1.Study();
-            bp1.Write();
-            bp1.Read();
-            bp1.Relax();
             bp1.Print();
 
             Console.WriteLine();
 
-            ClassRoom myList = new ClassRoom("Lina", "Donchenko", 10, 10, 11, 12, 10, 1, 2, p1, p2);
+            ClassRoom cr1 = new ClassRoom(new Pupil("Lina", "Donchenko", 10, 10, 11, 12, 10, 1, 2),
+                                          new Pupil("Petro", "Petriv", 7, 9, 7, 8, 9, 4, 3),
+                                          new Pupil("Danya", "Bondarenko", 8, 8, 7, 7, 8, 3, 2),
+                                          new Pupil("Ivan", "Boyko", 6, 5, 6, 4, 8, 5, 6));
+            ClassRoom.Print();
+
+            Console.WriteLine();
+
+            // Оцінки першого учня
+            p1.Study();
+            p1.Write();
+            p1.Read();
+            p1.Relax();
+
+            Console.WriteLine();
+
+            // Оцінки другого учня
+            p2.Study();
+            p2.Write();
+            p2.Read();
+            p2.Relax();
+
+            Console.WriteLine();
+
+            // Оцінки третього учня
+            p3.Study();
+            p3.Write();
+            p3.Read();
+            p3.Relax();
+
+            Console.WriteLine();
+
+            // Оцінки четвертого учня
+            p4.Study();
+            p4.Write();
+            p4.Read();
+            p4.Relax();
 
             Console.ReadLine();
         }
