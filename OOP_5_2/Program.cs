@@ -132,22 +132,22 @@ namespace OPP_5_2
 
         public virtual void Study()
         {
-            Console.WriteLine($"{FirstName} {LastName}: оцінка Study: {(markMath + markNat) / 2}");
+            Console.WriteLine($"Оцінка Study: {(markMath + markNat) / 2}");
         }
 
         public virtual void Write()
         {
-            Console.WriteLine($"{FirstName} {LastName}: оцінка Write: {12 - nMistW}");
+            Console.WriteLine($"Оцінка Write: {12 - nMistW}");
         }
 
         public virtual void Read()
         {
-            Console.WriteLine($"{FirstName} {LastName}: оцінка Read: {12 - nMistR}");
+            Console.WriteLine($"Оцінка Read: {12 - nMistR}");
         }
 
         public virtual void Relax()
         {
-            Console.WriteLine($"{FirstName} {LastName}: оцінка Relax: {(markChoir + markDraw + markSport) / 3}");
+            Console.WriteLine($"Оцінка Relax: {(markChoir + markDraw + markSport) / 3}");
         }
     }
 
@@ -299,28 +299,15 @@ namespace OPP_5_2
 
     public class ClassRoom : Pupil
     {
-        private static List<Pupil> myList;
-        public Pupil p1, p2, p3, p4;
-
-        public ClassRoom(Pupil p1, Pupil p2, Pupil p3, Pupil p4) : base()
+        public Pupil[] Pupils { get; set; } 
+        public ClassRoom( params Pupil[] pupils )
         {
-            this.p1 = p1;
-            this.p2 = p2;
-            this.p3 = p3;
-            this.p4 = p4;
-
-            myList = new List<Pupil>(4)
-            {
-                 new Pupil() { FirstName = "Lina", LastName = "Donchenko", MarkMath = 10, MarkNat = 10, MarkChoir = 11, MarkDraw = 12, MarkSport = 10, NMistW = 1, NMistR = 2 },
-                 new Pupil() { FirstName = "Petro", LastName = "Petriv", MarkMath = 7, MarkNat = 9, MarkChoir = 7, MarkDraw = 8, MarkSport = 9, NMistW = 4, NMistR = 3 },
-                 new Pupil() { FirstName = "Danya", LastName = "Bondarenko", MarkMath = 8, MarkNat = 8, MarkChoir = 7, MarkDraw = 7, MarkSport = 8, NMistW = 3, NMistR = 2 },
-                 new Pupil() { FirstName = "Ivan", LastName = "Boyko", MarkMath = 6, MarkNat = 5, MarkChoir = 6, MarkDraw = 4, MarkSport = 8, NMistW = 5, NMistR = 6 }
-            };
+            Pupils = pupils;   
         }
-
-        public static void Print()
+        public void Print()
         {
-            foreach (Pupil pupil in myList)
+            Console.WriteLine("_____ Учні_____");
+            foreach(Pupil pupil in Pupils )
             {
                 Console.WriteLine(pupil.FirstName + " " + pupil.LastName + " " + pupil.MarkMath + " " + pupil.MarkNat + " " + pupil.MarkChoir + " " + pupil.MarkDraw + " " + pupil.MarkSport + " " + pupil.NMistW + " " + pupil.NMistR);
             }
@@ -352,44 +339,137 @@ namespace OPP_5_2
 
             Console.WriteLine();
 
-            ClassRoom cr1 = new ClassRoom(new Pupil("Lina", "Donchenko", 10, 10, 11, 12, 10, 1, 2),
-                                          new Pupil("Petro", "Petriv", 7, 9, 7, 8, 9, 4, 3),
-                                          new Pupil("Danya", "Bondarenko", 8, 8, 7, 7, 8, 3, 2),
-                                          new Pupil("Ivan", "Boyko", 6, 5, 6, 4, 8, 5, 6));
-            ClassRoom.Print();
+            int k;
 
-            Console.WriteLine();
+            Console.WriteLine("Введіть кількість учнів в класі ClassRoom: 4, або 3, або 2, k = ");
 
-            // Оцінки першого учня
-            p1.Study();
-            p1.Write();
-            p1.Read();
-            p1.Relax();
+            k = Convert.ToInt32(Console.ReadLine());
 
-            Console.WriteLine();
+            switch (k)
+            {
+                case 4:
+                ClassRoom cr1 = new ClassRoom(new Pupil("Lina", "Donchenko", 10, 10, 11, 12, 10, 1, 2),
+                                    new Pupil("Petro", "Petriv", 7, 9, 7, 8, 9, 4, 3),
+                                    new Pupil("Danya", "Bondarenko", 8, 8, 7, 7, 8, 3, 2),
+                                    new Pupil("Ivan", "Boyko", 6, 5, 6, 4, 8, 5, 6));
 
-            // Оцінки другого учня
-            p2.Study();
-            p2.Write();
-            p2.Read();
-            p2.Relax();
+                cr1.Print();
 
-            Console.WriteLine();
+                Console.WriteLine();
 
-            // Оцінки третього учня
-            p3.Study();
-            p3.Write();
-            p3.Read();
-            p3.Relax();
+                // Оцінки першого учня
 
-            Console.WriteLine();
+                Console.WriteLine(p1.FirstName + " " + p1.LastName);
 
-            // Оцінки четвертого учня
-            p4.Study();
-            p4.Write();
-            p4.Read();
-            p4.Relax();
+                p1.Study();
+                p1.Write();
+                p1.Read();
+                p1.Relax();
 
+                Console.WriteLine();
+
+                // Оцінки другого учня
+
+                Console.WriteLine(p2.FirstName + " " + p2.LastName);
+
+                p2.Study();
+                p2.Write();
+                p2.Read();
+                p2.Relax();
+
+                Console.WriteLine();
+
+                // Оцінки третього учня
+
+                Console.WriteLine(p3.FirstName + " " + p3.LastName);
+
+                p3.Study();
+                p3.Write();
+                p3.Read();
+                p3.Relax();
+
+                Console.WriteLine();
+
+                // Оцінки четвертого учня
+
+                Console.WriteLine(p4.FirstName + " " + p4.LastName);
+
+                p4.Study();
+                p4.Write();
+                p4.Read();
+                p4.Relax();
+                break;
+
+                case 3:
+                ClassRoom cr2 = new ClassRoom(new Pupil("Lina", "Donchenko", 10, 10, 11, 12, 10, 1, 2),
+                                        new Pupil("Petro", "Petriv", 7, 9, 7, 8, 9, 4, 3),
+                                        new Pupil("Danya", "Bondarenko", 8, 8, 7, 7, 8, 3, 2));
+
+                cr2.Print();
+
+                Console.WriteLine();
+
+                // Оцінки першого учня
+
+                Console.WriteLine(p1.FirstName + " " + p1.LastName);
+
+                p1.Study();
+                p1.Write();
+                p1.Read();
+                p1.Relax();
+
+                Console.WriteLine();
+
+                // Оцінки другого учня
+
+                Console.WriteLine(p2.FirstName + " " + p2.LastName);
+
+                p2.Study();
+                p2.Write();
+                p2.Read();
+                p2.Relax();
+
+                Console.WriteLine();
+
+                // Оцінки третього учня
+
+                Console.WriteLine(p3.FirstName + " " + p3.LastName);
+
+                p3.Study();
+                p3.Write();
+                p3.Read();
+                p3.Relax();
+                break;
+
+                case 2:
+                ClassRoom cr3 = new ClassRoom(new Pupil("Lina", "Donchenko", 10, 10, 11, 12, 10, 1, 2),
+                                            new Pupil("Petro", "Petriv", 7, 9, 7, 8, 9, 4, 3));
+
+                cr3.Print();
+
+                Console.WriteLine();
+
+                // Оцінки першого учня
+
+                Console.WriteLine(p1.FirstName + " " + p1.LastName);
+
+                p1.Study();
+                p1.Write();
+                p1.Read();
+                p1.Relax();
+
+                Console.WriteLine();
+
+                // Оцінки другого учня
+
+                Console.WriteLine(p2.FirstName + " " + p2.LastName);
+
+                p2.Study();
+                p2.Write();
+                p2.Read();
+                p2.Relax();
+                break;
+            }
             Console.ReadLine();
         }
     }
